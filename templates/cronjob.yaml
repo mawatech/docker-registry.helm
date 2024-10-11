@@ -58,11 +58,8 @@ spec:
               - /bin/registry
               - garbage-collect
               - --delete-untagged={{ .Values.garbageCollect.deleteUntagged }}
-              - /etc/docker/registry/config.yml
-              {{- if .Values.garbageCollect.resources }}
-              resources:
-              {{- toYaml .Values.garbageCollect.resources | nindent 16 }}
-              {{- end }}
+              - {{ .Values.configPath }}/config.yml
+              resources: {{ toYaml .Values.garbageCollect.resources | nindent 12 }}
               env: {{ include "docker-registry.envs" . | nindent 16 }}
               {{- if .Values.containerSecurityContext.enabled }}
               securityContext: {{ omit .Values.containerSecurityContext "enabled" | toYaml | nindent 16 }}
