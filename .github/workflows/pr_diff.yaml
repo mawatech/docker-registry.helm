@@ -32,7 +32,7 @@ jobs:
             --set secrets.htpasswd=abc
             --set secrets.haSharedSecret=abc
             --set tlsSecretName=abc
-            --set garbageCollect.enabled=true
+            --set garbageCollect.enabled=false
             --set namespace=target-namespace
             --set proxy.enabled=true
             --set storage=s3
