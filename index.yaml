@@ -1,0 +1,21 @@
+apiVersion: v1
+entries:
+  docker-registry:
+  - apiVersion: v1
+    appVersion: 2.8.1
+    created: "2025-03-03T12:54:34.001980756Z"
+    description: A Helm chart for Docker Registry
+    digest: e3e0d9d3ccfd579927a52549f33fd4e573c70d5643f85c730f231f4060f2abc6
+    home: https://hub.docker.com/_/registry/
+    icon: https://helm.twun.io/docker-registry.png
+    maintainers:
+    - email: devin@canterberry.cc
+      name: Devin Canterberry
+      url: https://canterberry.cc/
+    name: docker-registry
+    sources:
+    - https://github.com/docker/distribution-library-image
+    urls:
+    - docker-registry-2.2.3.tgz
+    version: 2.2.3
+generated: "2025-03-03T12:54:34.001986046Z"
