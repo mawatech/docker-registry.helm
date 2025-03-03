@@ -2,6 +2,8 @@
 
 This directory contains a Kubernetes chart to deploy a private Docker Registry.
 
+This is a fork of https://github.com/twuni/docker-registry.helm
+
 ## Prerequisites Details
 
 * PV support on underlying infrastructure (if persistence is required)
@@ -17,7 +19,7 @@ This chart will do the following:
 First, add the repo:
 
 ```console
-helm repo add twuni https://helm.twun.io
+helm repo add twuni https://mawatech.github.io/docker-registry.helm
 ```
 
 To install the chart, use the following:
