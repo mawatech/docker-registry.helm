@@ -30,7 +30,7 @@ jobs:
             --set extraVolumeMounts[0].mountPath=/test
             --set secrets.htpasswd=abc
             --set tlsSecretName=abc
-            --set garbageCollect.enabled=true
+            --set garbageCollect.enabled=false
             --set namespace=target-namespace
             --set proxy.enabled=true
             --set storage=s3
@@ -40,7 +40,7 @@ jobs:
             --set s3.bucket=abc
             --set s3.encrypt=abc
           )
-          helm template --debug ${OPTIONS[@]} --output-dir before https://github.com/twuni/docker-registry.helm/archive/refs/heads/main.tar.gz
+          helm template --debug ${OPTIONS[@]} --output-dir before https://github.com/mawatech/docker-registry.helm/archive/refs/heads/main.tar.gz
           helm template --debug ${OPTIONS[@]} --output-dir after .
           # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
           echo 'HELM_DIFF<<EOF' >> $GITHUB_ENV
