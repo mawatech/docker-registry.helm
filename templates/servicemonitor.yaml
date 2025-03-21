@@ -18,4 +18,17 @@ spec:
   endpoints:
   - port: http-metrics
     interval: 15s
+    relabelings:
+    - action: replace
+      sourceLabels:
+      - __meta_kubernetes_pod_name
+      targetLabel: instance
+    - action: replace
+      sourceLabels:
+      - __meta_kubernetes_namespace
+      targetLabel: kubernetes_namespace
+    - action: replace
+      sourceLabels:
+      - __meta_kubernetes_pod_label_app
+      targetLabel: app
 {{- end }}
