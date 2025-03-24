@@ -30,7 +30,7 @@ jobs:
             --set extraVolumeMounts[0].mountPath=/test
             --set secrets.htpasswd=abc
             --set tlsSecretName=abc
-            --set garbageCollect.enabled=false
+            --set garbageCollect.enabled=true
             --set namespace=target-namespace
             --set proxy.enabled=true
             --set storage=s3
