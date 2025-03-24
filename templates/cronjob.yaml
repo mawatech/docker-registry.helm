@@ -45,7 +45,7 @@ spec:
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               command:
-              - /bin/registry
+              - /bin/registryd
               - garbage-collect
               - --delete-untagged={{ .Values.garbageCollect.deleteUntagged }}
               - {{ .Values.configPath }}/config.yml
