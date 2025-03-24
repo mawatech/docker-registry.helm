@@ -247,9 +247,4 @@ garbageCollect:
   enabled: false
   deleteUntagged: true
   schedule: "0 1 * * *"
-  resources:
-    requests:
-      cpu: 100m
-      memory: 128Mi
-    limits:
-      memory: 256Mi
+  resources: {}
