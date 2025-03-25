@@ -29,6 +29,7 @@ jobs:
             --set extraVolumeMounts[0].name=test
             --set extraVolumeMounts[0].mountPath=/test
             --set secrets.htpasswd=abc
+            --set secrets.haSharedSecret=abc
             --set tlsSecretName=abc
             --set garbageCollect.enabled=true
             --set namespace=target-namespace
