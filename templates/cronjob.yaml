@@ -59,7 +59,10 @@ spec:
               - garbage-collect
               - --delete-untagged={{ .Values.garbageCollect.deleteUntagged }}
               - {{ .Values.configPath }}/config.yml
-              resources: {{ toYaml .Values.garbageCollect.resources | nindent 16 }}
+              {{- if .Values.garbageCollect.resources }}
+              resources:
+              {{- toYaml .Values.garbageCollect.resources | nindent 16 }}
+              {{- end }}
               env: {{ include "docker-registry.envs" . | nindent 16 }}
               {{- if .Values.containerSecurityContext.enabled }}
               securityContext: {{ omit .Values.containerSecurityContext "enabled" | toYaml | nindent 16 }}
