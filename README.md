@@ -59,8 +59,8 @@ their default values.
 | `service.sessionAffinityConfig` | service session affinity config                                                        | `nil`           |
 | `replicaCount`              | k8s replicas                                                                               | `1`             |
 | `updateStrategy`            | update strategy for deployment                                                             | `{}`            |
-| `podAnnotations`            | Annotations for pod                                                                        | `{}`            |
-| `podLabels`                 | Labels for pod                                                                             | `{}`            |
+| `podAnnotations`            | Annotations for deployment pod, and `garbageCollect` pod unless set explicitly there. See `garbageCollect` | `{}` |
+| `podLabels`                 | Labels for deployment pod, and `garbageCollect` pod unless set explicitly there. See `garbageCollect` | `{}` |
 | `podDisruptionBudget`       | Pod disruption budget                                                                      | `{}`            |
 | `resources.limits.cpu`      | Container requested CPU                                                                    | `nil`           |
 | `resources.limits.memory`   | Container requested memory                                                                 | `nil`           |
@@ -81,13 +81,14 @@ their default values.
 | `secrets.swift.password`    | Password for Swift configuration                                                           | `nil`           |
 | `secrets.haSharedSecret`    | Shared secret for Registry                                                                 | `nil`           |
 | `configData`                | Configuration hash for docker                                                              | `nil`           |
-| `configPath`                | Configuration mount point in docker, `/etc/docker/registry` for registry version 2, `/etc/distribution` for version 3 | `/etc/docker/registry` |
+| `configPath`                | Configuration mount point in docker, `/etc/docker/registry` for registry version 2, `/etc/distribution` for version 3 | `/etc/distribution` |
 | `s3.region`                 | S3 region                                                                                  | `nil`           |
 | `s3.regionEndpoint`         | S3 region endpoint                                                                         | `nil`           |
 | `s3.bucket`                 | S3 bucket name                                                                             | `nil`           |
 | `s3.rootdirectory`          | S3 prefix that is applied to allow you to segment data                                     | `nil`           |
 | `s3.encrypt`                | Store images in encrypted format                                                           | `nil`           |
 | `s3.secure`                 | Use HTTPS                                                                                  | `nil`           |
+| `s3.forcepathstyle`         | Use path-style addressing, needed for some s3 compatible storage (minio)                   | `nil`           |
 | `swift.authurl`             | Swift authurl                                                                              | `nil`           |
 | `swift.container`           | Swift container                                                                            | `nil`           |
 | `proxy.enabled`             | If true, registry will function as a proxy/mirror                                          | `false`         |
@@ -122,6 +123,8 @@ their default values.
 | `garbageCollect.enabled`    | If true, will deploy garbage-collector cronjob                                             | `false`         |
 | `garbageCollect.deleteUntagged` | If true, garbage-collector will delete manifests that are not currently referenced via tag | `true`      |
 | `garbageCollect.schedule`   | CronTab schedule, please use standard crontab format                                       | `0 1 * * *`     |
+| `garbageCollect.podAnnotations` | CronJob pod Annotations. If left empty and chart `podAnnotations` are set, will use those. If both are set, these take precedence for the `garbageCollect` pods. | `{}` |
+| `garbageCollect.podLabels`  | CronJob pod Annotations. If left empty and chart `podLabels` are set, will use those. If both are set, these take precedence for the `garbageCollect` pods. | `{}` |
 | `garbageCollect.resources`  | garbage-collector requested resources                                                      | `{}`            |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to
