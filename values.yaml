@@ -19,7 +19,7 @@ serviceAccount:
 
 image:
   repository: registry
-  tag: 2.8.1
+  tag: 3.0.0
   pullPolicy: IfNotPresent
 # imagePullSecrets:
     # - name: docker
@@ -157,7 +157,7 @@ configData:
       interval: 10s
       threshold: 3
 
-configPath: "/etc/docker/registry"
+configPath: "/etc/distribution"
 
 containerSecurityContext:
   enabled: true
