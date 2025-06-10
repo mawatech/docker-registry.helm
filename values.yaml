@@ -135,6 +135,7 @@ metrics:
     rules: {}
 
 configPath: /etc/distribution
+
 configData:
   version: 0.1
   log:
